@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusBet Index3</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="theme-focus">
+    <section id="welcomeSplash" class="welcome-splash">
+      <h1>Welcome to FocusBet</h1>
+    </section>
+
+    <main class="app-shell layout-focus hidden-lock">
+      <section class="timer-panel card">
+        <h1>FocusBet</h1>
+        <p class="subtitle">先專注，再上桌；用紀律解鎖遊戲。</p>
+
+        <div class="ring-wrapper">
+          <svg class="progress-ring" width="320" height="320" viewBox="0 0 320 320" aria-label="倒數進度">
+            <circle class="ring-bg" cx="160" cy="160" r="130"></circle>
+            <circle class="ring-progress" cx="160" cy="160" r="130"></circle>
+          </svg>
+          <div class="time-display">
+            <span id="modeLabel">專注模式</span>
+            <strong id="timeText">25:00</strong>
+          </div>
+        </div>
+
+        <div class="time-picker card-soft">
+          <label for="minuteRange">圓弧滑桿（1 - 60 分）</label>
+          <input id="minuteRange" type="range" min="1" max="60" value="25" />
+          <p>目前設定：<span id="selectedMinutes">25</span> 分鐘</p>
+        </div>
+
+        <div class="controls">
+          <button id="startBtn" class="cta-btn">開始專注</button>
+          <button id="pauseBtn" class="ghost-btn">暫停</button>
+          <button id="resetBtn" class="ghost-btn">重置</button>
+        </div>
+
+        <div class="wallet-board card-soft">
+          <span>虛擬幣：</span>
+          <strong id="walletBalance" class="coin-value">100.00</strong>
+        </div>
+
+        <div class="prediction-board card-soft">
+          <span>本輪賭博勝率預測：</span>
+          <strong id="winRateText">--%</strong>
+        </div>
+
+        <div class="nav-actions">
+          <button id="openStatsBtn" class="ghost-btn">Stats Dashboard</button>
+          <button id="openShopBtn" class="ghost-btn">商城</button>
+          <button id="debugGameBtn" class="ghost-btn">測試：直接進入遊戲</button>
+        </div>
+      </section>
+
+      <section id="gambleMount" class="gamble-mount"></section>
+
+      <section id="shopPage" class="stats-page card hidden-lock" aria-label="商城頁面">
+        <div class="shop-topbar">
+          <h2>FocusBet 商城</h2>
+          <div class="wallet-board card-soft">
+            <span>虛擬幣：</span>
+            <strong id="shopWalletBalance" class="coin-value">100.00</strong>
+          </div>
+        </div>
+        <p>可用虛擬幣購買視覺道具（示意）。</p>
+        <div id="shopItems" class="game-selector"></div>
+        <p id="shopWarning" class="stake-warning hidden-lock">餘額不足</p>
+        <div class="stats-actions">
+          <button id="backFromShopBtn" class="cta-btn">返回番茄鐘</button>
+        </div>
+      </section>
+
+      <section id="statsPage" class="stats-page card hidden-lock" aria-label="統計頁面">
+        <h2>Stats Dashboard</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>遊戲名稱</th>
+              <th>來源</th>
+              <th>結果</th>
+              <th>金幣變化</th>
+              <th>最終倍率</th>
+              <th>勝率</th>
+            </tr>
+          </thead>
+          <tbody id="statsHistoryBody">
+            <tr>
+              <td colspan="6">尚無遊戲紀錄</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="stats-summary card-soft">
+          <p>總專注次數：<strong id="focusCountStat">0</strong></p>
+          <p>總輸贏虛擬幣：<strong id="coinStat" class="coin-value">0</strong></p>
+        </div>
+        <div class="stats-actions">
+          <button id="resetStatsBtn" class="ghost-btn">清空統計（歸零）</button>
+          <button id="backFromStatsBtn" class="cta-btn">返回番茄鐘</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
